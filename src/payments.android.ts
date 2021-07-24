@@ -1,4 +1,4 @@
-import * as TnsApplication from 'tns-core-modules/application';
+import { Application as TnsApplication } from '@nativescript/core';
 import { Failure } from './failure';
 import { Item } from './item';
 import { Order, OrderState } from './order';
