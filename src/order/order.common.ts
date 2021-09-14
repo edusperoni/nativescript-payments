@@ -12,7 +12,9 @@ export abstract class BaseOrder {
   public userData: string;
   public restored: boolean;
   /** Android only */
+  public isSubscription: boolean;
   public dataSignature: string;
+  public acknowledged: boolean;
 
   constructor(nativeValue: Purchase | SKPaymentTransaction, restored: boolean = false) {
     this.nativeValue = nativeValue;

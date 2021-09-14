@@ -11,9 +11,13 @@ export declare function fetchItems(itemIds: Array<string>): void;
 
 export declare function buyItem(item: Item, userData?: string): void;
 
+export function fetchSubscriptions(itemIds: Array<string>): void;
+
+export function startSubscription(item: Item, userData?: string): void;
+
 export declare function finalizeOrder(order: Order): void;
 
-export declare function restoreOrders(): void;
+export declare function restoreOrders(skuType?: string): void;
 
 export declare function canMakePayments(): boolean;
 

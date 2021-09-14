@@ -169,6 +169,7 @@ export function canMakePayments(): boolean {
 }
 
 /* tslint:disable: max-classes-per-file */
+@NativeClass
 class SKProductRequestDelegateImpl extends NSObject implements SKProductsRequestDelegate {
   /* tslint:disable: variable-name */
   public static ObjCProtocols = [SKProductsRequestDelegate];
@@ -209,6 +210,7 @@ class SKProductRequestDelegateImpl extends NSObject implements SKProductsRequest
   }
 }
 
+@NativeClass
 class SKPaymentTransactionObserverImpl extends NSObject implements SKPaymentTransactionObserver {
   /* tslint:disable: variable-name */
   public static ObjCProtocols = [SKPaymentTransactionObserver];

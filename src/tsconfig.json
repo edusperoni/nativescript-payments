@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     // To target es6 may need to switch `XXX extends YYY` to (<any>YYY).extend(...
-    "target": "es5",
-    "module": "commonjs",
+    // "outDir": "../dist",
+    "target": "ES2017",
+    // "module": "CommonJS",
+    "module": "esnext",
+    "moduleResolution": "node",
     "declaration": true,
     "removeComments": true,
     "noLib": false,
@@ -33,7 +36,8 @@
   },
   "include": [
     // refs
-    "node_modules/@nativescript/types",
+    "node_modules/@nativescript/types-android/lib/android-28.d.ts",
+    "node_modules/@nativescript/types-ios/index.d.ts",
     "typings/*",
     // srcs
     "index.ts",
