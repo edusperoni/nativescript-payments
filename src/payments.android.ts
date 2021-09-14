@@ -345,7 +345,7 @@ export function restoreOrders(skuType?: string): void {
           const responseCode = result.getResponseCode();
           if (responseCode === com.android.billingclient.api.BillingClient.BillingResponseCode.OK) {
             for (let i = 0; i < purchasesList.size(); i++) {
-              const purchase = purchasesList.get(i);
+              const purchase: com.android.billingclient.api.PurchaseHistoryRecord = purchasesList.get(i);
               if (purchase) {
                 _payments$.next({
                   context: PaymentEvent.Context.PROCESSING_ORDER,
@@ -400,7 +400,7 @@ function _purchaseHandler(responseCode: number, purchases: List<Purchase>, skuTy
     if (responseCode === com.android.billingclient.api.BillingClient.BillingResponseCode.OK) {
       if (purchases && purchases.size()) {
         for (let i = 0; i < purchases.size(); i++) {
-          const purchase = purchases.get(i);
+          const purchase: com.android.billingclient.api.Purchase = purchases.get(i);
           if (purchase) {
             const order = new Order(purchase, false);
             // order.isSubscription = isSubscription;

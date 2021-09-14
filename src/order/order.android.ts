@@ -1,13 +1,14 @@
 import { BaseOrder, OrderState } from './order.common';
 
 type Purchase = com.android.billingclient.api.Purchase;
+type PurchaseHistoryRecord = com.android.billingclient.api.PurchaseHistoryRecord;
 
 export { OrderState } from './order.common';
 
 export class Order extends BaseOrder {
   public nativeValue: Purchase;
 
-  constructor(nativeValue: Purchase, restored: boolean = false) {
+  constructor(nativeValue: Purchase | PurchaseHistoryRecord, restored: boolean = false) {
     super(nativeValue, restored);
 
     const jsonObject: any = JSON.parse(nativeValue.getOriginalJson());
@@ -15,11 +16,11 @@ export class Order extends BaseOrder {
     this.itemId = nativeValue.getSkus().get(0) as string;
     this.receiptToken = nativeValue.getPurchaseToken();
     this.dataSignature = nativeValue.getSignature();
-    this.orderId = nativeValue.getOrderId();
+    this.orderId = 'getOrderId' in nativeValue ? nativeValue.getOrderId() : null;
     this.userData = jsonObject.developerPayload;
     this.isSubscription = jsonObject.autoRenewing;
     this.orderDate = new Date(nativeValue.getPurchaseTime());
-    this.acknowledged = nativeValue.isAcknowledged();
+    this.acknowledged = 'isAcknowledged' in nativeValue ? nativeValue.isAcknowledged() : null;
     if (typeof jsonObject.purchaseState !== 'undefined') {
       // console.log('jsonObject.purchaseState:', jsonObject.purchaseState);
       switch (jsonObject.purchaseState) {
