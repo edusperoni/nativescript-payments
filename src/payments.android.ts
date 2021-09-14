@@ -235,9 +235,11 @@ export function finalizeOrder(order: Order): void {
 
         return;
       }
-      const params = new com.android.billingclient.api.AcknowledgePurchaseParams.Builder()
+
+      const params = com.android.billingclient.api.AcknowledgePurchaseParams.newBuilder()
         .setPurchaseToken(order.receiptToken)
         .build();
+
       _billingClient.acknowledgePurchase(
         params,
         new com.android.billingclient.api.AcknowledgePurchaseResponseListener({
